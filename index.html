@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seraphine Vale | Cosplay • Softcore • Hardcore</title>
+  <meta name="description" content="Seraphine Vale — Cosplay fantasies that turn filthy. Soft teasing by day, hardcore sin by night. 18+ only." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0c;
+      --bg-card: #121216;
+      --purple: #7c3aed;
+      --purple-light: #a78bfa;
+      --pink: #ec4899;
+      --pink-hot: #f472b6;
+      --text: #f5f5f7;
+      --text-muted: #a1a1aa;
+      --border: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ========== AGE GATE ========== */
+    #age-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: radial-gradient(ellipse at center, #1a1025 0%, #0a0a0c 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    #age-gate.hidden {
+      display: none;
+    }
+
+    .age-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px 40px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(124, 58, 237, 0.25);
+    }
+
+    .age-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--purple-light), var(--pink-hot));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .age-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+    }
+
+    .age-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+      text-decoration: none;
+      color: white;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      box-shadow: 0 4px 20px rgba(236, 72, 153, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(236, 72, 153, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text-muted);
+      color: var(--text);
+    }
+
+    /* ========== MAIN CONTENT ========== */
+    .site {
+      display: none;
+    }
+
+    .site.visible {
+      display: block;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(124, 58, 237, 0.15);
+      border: 1px solid rgba(124, 58, 237, 0.3);
+      color: var(--purple-light);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 8vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff 30%, var(--purple-light) 70%, var(--pink-hot));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .bio {
+      max-width: 540px;
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+
+    .bio strong {
+      color: var(--pink-hot);
+      font-weight: 500;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .btn-telegram {
+      background: linear-gradient(135deg, #0088cc, #00aaff);
+      box-shadow: 0 4px 20px rgba(0, 136, 204, 0.35);
+    }
+
+    .btn-telegram:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0, 136, 204, 0.5);
+    }
+
+    .btn-x {
+      background: #000;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-x:hover {
+      background: #111;
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .warning {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      opacity: 0.7;
+      margin-top: 12px;
+    }
+
+    /* Gallery */
+    .gallery-section {
+      padding: 80px 24px 100px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      font-size: 0.95rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      aspect-ratio: 3 / 4;
+      background: var(--bg-card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      border-color: rgba(124, 58, 237, 0.4);
+    }
+
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #1a1525 0%, #0f0f14 100%);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      gap: 12px;
+    }
+
+    .gallery-placeholder svg {
+      width: 48px;
+      height: 48px;
+      opacity: 0.4;
+    }
+
+    .gallery-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 24px 60px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--purple-light);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .age-card {
+        padding: 36px 24px;
+      }
+
+      .cta-row {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- AGE GATE -->
+  <div id="age-gate">
+    <div class="age-card">
+      <h2>Are you 18 or older?</h2>
+      <p>This site contains adult cosplay content — softcore & hardcore. You must be 18+ to enter.</p>
+      <div class="age-buttons">
+        <button class="btn btn-primary" onclick="enterSite()">I am 18+</button>
+        <button class="btn btn-secondary" onclick="leaveSite()">Leave</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN SITE -->
+  <div class="site" id="main-site">
+    <section class="hero">
+      <div class="badge">18+ Cosplay Creator</div>
+      <h1>Seraphine Vale</h1>
+      <p class="bio">
+        Cosplay fantasies that turn filthy.<br />
+        Soft teasing by day, <strong>hardcore sin by night</strong>.<br />
+        Where fantasy kneels and begs for more.
+      </p>
+
+      <div class="cta-row">
+        <!-- REPLACE THESE LINKS WITH YOUR REAL ONES -->
+        <a href="https://t.me/seraphinevale" class="btn btn-telegram" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.781-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.141.12.098.153.23.169.331.016.1.036.327.02.505z"/></svg>
+          Join Telegram
+        </a>
+        <a href="https://x.com/seraphinevale" class="btn btn-x" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.227-8.451L1.502 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+          Follow on X
+        </a>
+      </div>
+      <p class="warning">Explicit content • 18+ only</p>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Gallery</h2>
+      <p class="section-sub">A taste of what’s waiting for you…</p>
+
+      <div class="gallery-grid">
+        <!-- Replace these placeholders with your real images later -->
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Cosplay Set 01</span>
+          </div>
+          <div class="gallery-label">Soft tease</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Cosplay Set 02</span>
+          </div>
+          <div class="gallery-label">Lingerie drop</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Cosplay Set 03</span>
+          </div>
+          <div class="gallery-label">Hardcore cut</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Cosplay Set 04</span>
+          </div>
+          <div class="gallery-label">Behind the scenes</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Cosplay Set 05</span>
+          </div>
+          <div class="gallery-label">Character exclusive</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Cosplay Set 06</span>
+          </div>
+          <div class="gallery-label">Request special</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Seraphine Vale · All rights reserved</p>
+      <p style="margin-top: 8px;">This site contains adult content. By entering you confirm you are 18 years of age or older.</p>
+    </footer>
+  </div>
+
+  <script>
+    function enterSite() {
+      document.getElementById('age-gate').classList.add('hidden');
+      document.getElementById('main-site').classList.add('visible');
+      // Optional: remember for this session
+      sessionStorage.setItem('seraphine-age-verified', 'true');
+    }
+
+    function leaveSite() {
+      window.location.href = 'https://www.google.com';
+    }
+
+    // Auto-enter if already verified this session
+    if (sessionStorage.getItem('seraphine-age-verified') === 'true') {
+      enterSite();
+    }
+  </script>
+</body>
+</html>
